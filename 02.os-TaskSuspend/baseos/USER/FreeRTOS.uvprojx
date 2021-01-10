@@ -577,6 +577,11 @@
               <FileType>1</FileType>
               <FilePath>..\Util\Vos.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Util\bsp.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
