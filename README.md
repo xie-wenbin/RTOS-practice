@@ -32,4 +32,5 @@
 - 2020.12.29：add 02.os-TaskSuspend
 - 2021.01.03：add 02.os-interrupt
 - 2021.01.10:   add 03~06
+- 2021.03.21：新增HAL版本，freeRTOS版本更新至10.0，修改vos中的变量定义
 
