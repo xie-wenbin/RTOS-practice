@@ -101,7 +101,7 @@ typedef struct os_mutex_def  {
 } vosMutexDef_t;
 
 typedef struct os_semaphore_def  {
-  uint32_t                   dummy;    ///< dummy value.
+  uint32_t                   dummy;    ///< dummy value. for semaphore initialize value
 #if( configSUPPORT_STATIC_ALLOCATION == 1 )
   StaticSemaphore_t        *controlblock;      ///< control block for static allocation; NULL for dynamic allocation
 #endif

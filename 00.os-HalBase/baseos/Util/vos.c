@@ -656,6 +656,10 @@ int vosMutexDelete (vosMutex mutex_id)
   */
 vosSem vosSemCreate (const vosSemDef_t *semaphore_def, int32_t count)
 { 
+   int32_t iInitCount;
+
+   iInitCount = semaphore_def->dummy;
+   
 #if( configSUPPORT_STATIC_ALLOCATION == 1 ) && ( configSUPPORT_DYNAMIC_ALLOCATION == 1 )
 
   vosSem sema;
@@ -666,7 +670,7 @@ vosSem vosSemCreate (const vosSemDef_t *semaphore_def, int32_t count)
     }
     else {
 #if (configUSE_COUNTING_SEMAPHORES == 1 )
-      return xSemaphoreCreateCountingStatic( count, count, semaphore_def->controlblock );
+      return xSemaphoreCreateCountingStatic( count, iInitCount, semaphore_def->controlblock );
 #else
       return NULL;
 #endif
@@ -679,7 +683,7 @@ vosSem vosSemCreate (const vosSemDef_t *semaphore_def, int32_t count)
     }
     else {
 #if (configUSE_COUNTING_SEMAPHORES == 1 )	
-      return xSemaphoreCreateCounting(count, count);
+      return xSemaphoreCreateCounting(count, iInitCount);
 #else
       return NULL;
 #endif    
@@ -692,7 +696,7 @@ vosSem vosSemCreate (const vosSemDef_t *semaphore_def, int32_t count)
   else
   {
 #if (configUSE_COUNTING_SEMAPHORES == 1 )
-      return xSemaphoreCreateCountingStatic( count, count, semaphore_def->controlblock );
+      return xSemaphoreCreateCountingStatic( count, iInitCount, semaphore_def->controlblock );
 #else
       return NULL;
 #endif    
@@ -706,7 +710,7 @@ vosSem vosSemCreate (const vosSemDef_t *semaphore_def, int32_t count)
   }
   else {
 #if (configUSE_COUNTING_SEMAPHORES == 1 )	
-    return xSemaphoreCreateCounting(count, count);
+    return xSemaphoreCreateCounting(count, iInitCount);
 #else
     return NULL;
 #endif
